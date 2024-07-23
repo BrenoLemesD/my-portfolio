@@ -1,19 +1,31 @@
 import { styled } from "@mui/material"
+import { ReactNode } from "react"
 
-const StyledButton = () => {
+interface StyledIButtonProps {
+  children: ReactNode
+}
 
-    const StyledButton = styled("button")(({theme}) => ({
+const StyledButton: React.FC<StyledIButtonProps> = ({children}) => {
+
+    const StyledButton = styled("button")(({ theme }) => ({
         backgroundColor: "transparent",
         border: `1px solid ${theme.palette.primary.contrastText}`,
         borderRadius: "3px",
         padding: "5px 15px",
-        width: "100%",
-
+        width: "300px",
+        color: theme.palette.primary.contrastText,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "10",
+        '&:hover:': {
+          backgroundColor: theme.palette.secondary.dark
+        }
     }))
 
     return (
       <>
-        <StyledButton>texto</StyledButton>
+        <StyledButton>{children}</StyledButton>
       </>
     )
   }
