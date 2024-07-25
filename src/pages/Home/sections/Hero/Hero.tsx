@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Typography, styled } from "@mui/material"
+import { Box, Container, Grid, Typography, styled } from "@mui/material"
 import Avatar from "../../../../assets/images/avatar.jpeg"
 import DownloadIcon from '@mui/icons-material/Download';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
