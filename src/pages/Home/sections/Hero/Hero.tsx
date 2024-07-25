@@ -67,6 +67,11 @@ const Hero = () => {
                             </Grid>
                         </Grid>
                     </Grid>
+                    <Container sx={{ display: 'flex' }}>
+                        
+                     </Container>
+            
+
                 </Container>
             </StyledHero>
         </>
