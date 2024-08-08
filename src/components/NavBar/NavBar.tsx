@@ -7,11 +7,11 @@ const NavBar = () => {
     const StyledToolbar = styled(Toolbar)(() => ({
         display: "flex",
         justifyContent: "space-evenly",
-        backgroundColor: '#1C1C1C', // Cor de fundo da barra de navegação
+        backgroundColor: '#000000', // Cor de fundo da barra de navegação
     }));
 
     return (
-        <AppBar position="absolute" sx={{ backgroundColor: '#333333' }}>
+        <AppBar position="absolute" sx={{ backgroundColor: '#000000' }}>
             <StyledToolbar>
                 <MenuItem>
                     <Link to="about" smooth={true} duration={500} style={{ color: '#FFFFFF', textDecoration: 'none' }}>

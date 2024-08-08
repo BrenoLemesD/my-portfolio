@@ -27,27 +27,27 @@ const ProjectCarousel = () => {
     const projects = [
         {
             title: 'Pizza',
-            description: 'Developed a fully functional e-commerce website with features like product search, user authentication, and payment gateway integration using React and Node.js.',
+            description: 'Desenvolvi um site de e-commerce totalmente funcional com recursos como busca de produtos, autenticação de usuário e integração com gateway de pagamento usando React e Node.js.',
             imageUrl: pizzaImage
         },
         {
-            title: 'Chat Application',
-            description: 'Created a real-time chat application using WebSocket and Node.js, allowing users to send messages and create chat rooms.',
+            title: 'Aplicativo de Chat',
+            description: 'Criei um aplicativo de chat em tempo real usando WebSocket e Node.js, permitindo que os usuários enviem mensagens e criem salas de chat.',
             imageUrl: 'url-to-your-image2.jpg'
         },
         {
-            title: 'Social Media Platform',
-            description: 'Built a social media platform where users can share updates, follow each other, and interact through comments and likes using MERN stack.',
+            title: 'Plataforma de Rede Social',
+            description: 'Construí uma plataforma de rede social onde os usuários podem compartilhar atualizações, seguir uns aos outros e interagir através de comentários e curtidas usando o stack MERN.',
             imageUrl: 'url-to-your-image3.jpg'
         },
         {
-            title: 'Task Management Tool',
-            description: 'Designed and developed a task management tool to help teams organize their work, set deadlines, and track progress with features for collaboration.',
+            title: 'Ferramenta de Gestão de Tarefas',
+            description: 'Desenhei e desenvolvi uma ferramenta de gestão de tarefas para ajudar equipes a organizar seu trabalho, definir prazos e acompanhar o progresso, com recursos de colaboração.',
             imageUrl: 'url-to-your-image4.jpg'
         },
         {
-            title: 'Fitness App',
-            description: 'Created a fitness tracking app that allows users to log workouts, track progress, and set fitness goals using React Native.',
+            title: 'App de Fitness',
+            description: 'Criei um aplicativo de rastreamento de fitness que permite aos usuários registrar treinos, acompanhar o progresso e definir metas de fitness usando React Native.',
             imageUrl: 'url-to-your-image5.jpg'
         },
     ];
@@ -55,54 +55,69 @@ const ProjectCarousel = () => {
     return (
         <Box sx={{ textAlign: 'center', mb: 4 }}>
             <Typography variant="h4" component="h2" sx={{ mb: 4 }}>
-                My Projects
+                Meus Projetos
             </Typography>
             <Slider {...settings}>
                 {projects.map((project, index) => (
                     <Box key={index} sx={{ p: 2 }}>
                         <Card sx={{
-                            height: { xs: '40vh', sm: '50vh', md: '60vh' },
+                            width: 360, // Largura fixa para o card
+                            height: 460, // Altura fixa para o card
                             transform: 'scale(0.8)',
-                            transition: 'transform 0.6s ease, box-shadow 0.3s ease',
+                            transition: 'transform 0.6s ease, box-shadow 0.3s ease, opacity 0.5s ease-in-out',
                             position: 'relative',
                             backgroundColor: 'background.paper',
                             color: 'text.primary',
+                            opacity: 0.7, // Opacidade inicial para os cards fora do centro
                             '&:hover': {
-                                transform: 'scale(0.85)',
+                                transform: 'scale(0.85)', // Escala o card no hover
+                                boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.5)',
                             },
                             '&.slick-center': {
-                                transform: 'scale(1.2)',
-                                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
+                                transform: 'scale(1.3) translateZ(0)', // Destaque do card, trazendo-o para frente
+                                boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.6)',
                                 border: '2px solid',
                                 borderColor: theme => theme.palette.primary.main,
+                                opacity: 1, // Opacidade máxima quando o card está no centro
+                                transition: 'opacity 0.5s ease-in-out, transform 0.5s ease',
                             },
-                            borderRadius: '16px',
-                            overflow: 'hidden', // Garante que a imagem não vazará do card
+                            borderRadius: '24px',
+                            overflow: 'hidden',
+                            '@media (max-width: 768px)': {
+                                width: '100%', // Largura ajustável para telas menores
+                                height: 'auto', // Altura automática para telas menores
+                            }
                         }}>
                             <CardMedia
                                 component="img"
-                                height="60%"
+                                height="100%" // Ajusta a altura para ocupar o card inteiro
                                 image={project.imageUrl}
                                 alt={project.title}
                                 sx={{
-                                    borderRadius: '16px 16px 0 0',
                                     objectFit: 'cover', // Faz com que a imagem cubra todo o CardMedia sem distorcer
+                                    position: 'absolute', // Faz a imagem cobrir o conteúdo
+                                    top: 0,
+                                    left: 0,
+                                    width: '100%',
+                                    height: '100%',
                                 }}
                             />
                             <CardContent sx={{
-                                position: 'absolute',
-                                bottom: 0,
+                                position: 'absolute', // Fixa o conteúdo no rodapé do card
+                                bottom: 0, // Posiciona no fundo
                                 left: 0,
                                 right: 0,
-                                background: 'rgba(0, 0, 0, 0.5)',
+                                background: 'rgba(0, 0, 0, 0.6)',
                                 color: 'white',
                                 padding: 2,
-                                borderRadius: '0 0 16px 16px',
+                                borderRadius: '0 0 24px 24px', // Bordas arredondadas somente na parte inferior
+                                backdropFilter: 'blur(1px)', // Efeito de glassmorphism
+                                zIndex: 1, // Garante que o conteúdo fique acima da imagem
                             }}>
-                                <Typography variant="h5" component="div">
+                                <Typography variant="h6" component="div"> {/* Ajusta o tamanho do título */}
                                     {project.title}
                                 </Typography>
-                                <Typography variant="body2">
+                                <Typography variant="body2"> {/* Ajusta o tamanho do texto de descrição */}
                                     {project.description}
                                 </Typography>
                             </CardContent>
