@@ -57,12 +57,18 @@ const Hero = () => {
                                 </StyledButton>
                             </Grid>
                             <Grid item xs={12} md={4} display="flex" justifyContent="center">
-                                <StyledButton>
-                                    <MailOutlineIcon />
-                                    <Typography color="primary.contrastText">
-                                        Contact me
-                                    </Typography>
-                                </StyledButton>
+                                {/* Envolvendo o botão dentro de uma tag <a> */}
+                                <a 
+                                  href="mailto:brenolemesd@gmail.com?subject=Contato%20via%20Portfolio&body=Olá%20Breno%2C%20gostaria%20de%20entrar%20em%20contato%20com%20você." 
+                                  style={{ textDecoration: 'none' }}
+                                >
+                                    <StyledButton>
+                                        <MailOutlineIcon />
+                                        <Typography color="primary.contrastText">
+                                            Contact me
+                                        </Typography>
+                                    </StyledButton>
+                                </a>
                             </Grid>
                         </Grid>
                     </Grid>
